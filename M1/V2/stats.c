@@ -14,11 +14,6 @@
 
 
 
-
-
-
-
-
 int find_min(int a[],int n,int i)
  {
  	static int min=0;;
