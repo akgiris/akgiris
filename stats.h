@@ -22,6 +22,11 @@
 #ifndef __STATS_H__
 #define __STATS_H__
 
+
+
+
+
+
 /* The find_max function is when Given an array of data and a length, returns the maximum. */
 
 int find_max(int a[],int n,int i);
@@ -32,11 +37,11 @@ int find_min(int a[],int n,int i);
 
 /* The find_mean function is when Given an array of data and a length, returns the mean. */
 
-float find_mean(int a[],int n);
+int find_mean(int a[],int n);
 
 /* The find_median function is when Given an array of data and a length, returns the median value. */
 
-float find_median(int a[],int n);
+int find_median(int a[],int n);
 
 /* The print_array function is when Given an array of data and a length, prints the array to the screen */ 
 

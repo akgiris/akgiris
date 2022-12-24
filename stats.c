@@ -16,7 +16,9 @@
 
 int find_min(int a[],int n,int i)
  {
- 	static int min=0;;
+ 	
+	
+	static int min=0;;
  	for (i=1;i<n;i++)
         {
        		if(a[min]>a[i])
@@ -43,10 +45,10 @@ int find_max(int a[],int n,int i)
  	
  }
 
-float find_mean(int a[],int n)
+int find_mean(int a[],int n)
  { 	   	
-		float toplam = 0;
-		float mean=0;
+		int toplam = 0;
+		int mean=0;
 		
 	 
 		for (int i=0;i<n;i++){
@@ -83,10 +85,19 @@ void Sort_array(int a[],int n)
 
 }
 
-float find_median(int a[],int n)
+int find_median(int a[],int n)
 {
-    float median=0;
-    
+    int median=0;
+    int i,j,temp;
+	for (i=0 ; i < n; i++){
+		for (j=0 ;j<n;j++){
+			if (a[i] > a [j]){
+				temp=a[i];
+				a[i]=a[j];
+				a[j]=temp;	
+			}
+		}
+	}
     // if number of elements are even
     if(n%2 == 0)
         median = (a[(n-1)/2] + a[n/2])/2.0;
@@ -96,6 +107,13 @@ float find_median(int a[],int n)
     
     return median;
 }
+
+
+
+
+
+
+
 
 
 void print_array(int a[],int n)
@@ -116,7 +134,7 @@ void print_statisticks(int a[],int n)
 
 	printf("maximum of array is : %d",a[(find_max(a,n,1))]);	
 
-	printf("\nMean of array is : %2f ",(find_mean(a,n)));
+	printf("\nMean of array is : %d ",(find_mean(a,n)));
 
 	median = find_median(a,n);
 
@@ -124,7 +142,8 @@ void print_statisticks(int a[],int n)
 
 }
 
-
+/* Size of the Data Set */
+#define SIZE (40)
 
 
 
@@ -134,9 +153,17 @@ int main()
     int choosing ;
     int a[1000],i,n,sum;
     float median=0;
+
+
+    int test[SIZE] = { 34, 201, 190, 154,   8, 194,   2,   6,
+                                114, 88,   45,  76, 123,  87,  25,  23,
+                                200, 122, 150, 90,   92,  87, 177, 244,
+                                201,   6,  12,  60,   8,   2,   5,  67,
+                                  7,  87, 250, 230,  99,   3, 100,  90};
+    
     		
 
-    printf("\n\nWHAT DO YOU WANT , PLEASE CHOOSE BELOW\n\n\n1:Finding the minimum in an array\n2:Finding the maximum in an array\n3:Finding the mean an array\n4:Sorting the array from largest to smallest\n5:Finding of the array Meadian Value\n6:Printing to array to the screen\n7:Print an array statistic values(Minimum,Maximum,Mean,Median)\n\n\n") ;
+    printf("\n\nWHAT DO YOU WANT TO SEE , PLEASE CHOOSE BELOW\n\n\n1:To see Minimum Value of the array\n2:To see Maximum Value of the array\n3:To see Mean Value of the array\n4:Sorting the array from largest to smallest\n5:To see Meadian Value of the array\n6:Print to array to the screen\n7:Print the array statistic values(Minimum,Maximum,Mean,Median)\n\n\n") ;
 
     printf("Please choose:") ;
     scanf("%d",&choosing);
@@ -145,137 +172,77 @@ int main()
 
 	case 1 :
 
-		
-   
-    printf("Enter size of the array : ");
-    scanf("%d", &n); 
-    
-    for(i=0; i<n; i++)
-    {
-	printf("Enter elements %d in array : ",i+1);
-        scanf("%d", &a[i]);
-    }
- 
-     
+	     
 
-     printf("minimum of array is : %d \n",a[(find_min(a,n,1))]);
+     printf("minimum of array is : %d \n",test[(find_min(test,40,1))]);
 
      
-	break;
+	return main();
 
 	case 2 :
 
 			
    
-    printf("Enter size of the array : ");
-    scanf("%d", &n); 
-    
-    for(i=0; i<n; i++)
-    {
-	printf("Enter elements %d in array : ",i+1);
-        scanf("%d", &a[i]);
-    }
- 
-     
+      
 
-     
-
-     printf("\nmaximum of array is : %d\n",a[(find_max(a,n,1))]);
-	break;
+        printf("\nmaximum of array is : %d\n",test[(find_max(test,40,1))]);
+	return main();
 
 	case 3 :
-    printf("Enter size of the array : ");
-    scanf("%d", &n); 
     
-    for(i=0; i<n; i++)
-    {
-	printf("Enter elements %d in array : ",i+1);
-        scanf("%d", &a[i]);
-    }
 
-
-	printf("\nMean of array is :%.2f \n",(find_mean(a,n)));
+	printf("\nMean of array is :%d \n",(find_mean(test,40)));
 	/*find_mean(a,n);*/
 
-	break;
+	return main();
 
 	case 4 :
-	printf("Enter size of the array : ");
-  	scanf("%d", &n); 
-    
-    for(i=0; i<n; i++)
-    {
-	printf("Enter elements %d in array : ",i+1);
-        scanf("%d", &a[i]);
-    }
-
-	Sort_array(a,n);
+	
+	Sort_array(test,40);
 
 
 
 
 
-	break;
+	return main();
 
 
 	case 5 :
 
-	printf("Enter size of the array : ");
-  	scanf("%d", &n); 
-    
-    for(i=0; i<n; i++)
-    {
-	printf("Enter elements %d in array : ",i+1);
-        scanf("%d", &a[i]);
-    }
-
-	median = find_median(a,n);
+	
+	median = find_median(test,40);
 
 	printf("\nThe median of the array is : %f",median);
 
 	printf("\n");
 
-	break;
+	return main();
 
 
 	case 6 :
 
-	printf("Enter size of the array : ");
-  	scanf("%d", &n); 
-    
-    for(i=0; i<n; i++)
-    {
-	printf("Enter elements %d in array : ",i+1);
-        scanf("%d", &a[i]);
-    }
-	print_array(a,n);
+	
+	print_array(test,40);
 
 
-	break;
+	return main();
 
 
 
 	case 7 :
 
-	printf("Enter size of the array : ");
-  	scanf("%d", &n); 
-    
-    for(i=0; i<n; i++)
-    {
-	printf("Enter elements %d in array : ",i+1);
-        scanf("%d", &a[i]);
-    }
+	
 
-	print_statisticks(a,n);
+	print_statisticks(test,40);
 
 
 
-	break;
+	return main();
 
 	default:
 		printf("Please enter valid value \n" );
 		
-	break;
+	return main();
      }     
 }
 
